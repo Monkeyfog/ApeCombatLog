@@ -83,7 +83,7 @@ public class CombatPlayer {
     }
     public static CombatPlayer getCombatPlayer(Player player){
         for (CombatPlayer combatPlayer : CombatPlayers) {
-            if (combatPlayer.getPlayer() == player || combatPlayer.getDamager() == player){
+            if (combatPlayer.getPlayer() == player){
                 return combatPlayer;
             }
         }

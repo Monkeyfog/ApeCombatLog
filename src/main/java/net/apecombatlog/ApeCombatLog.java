@@ -1,5 +1,7 @@
 package net.apecombatlog;
 
+import org.bstats.bukkit.Metrics;
+
 import net.apecombatlog.listener.DamageListener;
 import net.apecombatlog.listener.DeathListener;
 import net.apecombatlog.listener.ElytraListener;
@@ -21,6 +23,10 @@ public final class ApeCombatLog extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new LogListener(), this);
         Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
         Bukkit.getPluginManager().registerEvents(new ElytraListener(), this);
+
+        int pluginId = 19373; // <-- Replace with the id of your plugin!
+        Metrics metrics = new Metrics(this, pluginId);
+
     }
 
     @Override
