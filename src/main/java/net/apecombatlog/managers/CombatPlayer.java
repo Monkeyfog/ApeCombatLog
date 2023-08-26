@@ -13,12 +13,15 @@ public class CombatPlayer {
     private Player player;
     private Player damager;
 
+
+    private int combatTime = ApeCombatLog.getInstance().getConfig().getInt("combat_time");
     private static ArrayList<CombatPlayer> CombatPlayers = new ArrayList<>();
     private int scheadulerId;
 
     public CombatPlayer(Player player, Player damager){
         this.player = player;
         this.damager = damager;
+
         startRunnable();
     }
     public void startRunnable(){
@@ -33,7 +36,7 @@ public class CombatPlayer {
                 damager.sendMessage("");
                 remove();
             }
-        }.runTaskLater(ApeCombatLog.getInstance(), 15*20).getTaskId();
+        }.runTaskLater(ApeCombatLog.getInstance(), combatTime * 20).getTaskId();
     }
 
     public Player getPlayer() {
