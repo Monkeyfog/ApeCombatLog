@@ -2,3 +2,7 @@ name: ApeCombatLog
 version: '${project.version}'
 main: net.apecombatlog.ApeCombatLog
 api-version: 1.20
+commands:
+  combatreload:
+    aliases:
+      - combatrl

@@ -4,6 +4,7 @@ import net.apecombatlog.ApeCombatLog;
 import org.bukkit.Bukkit;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -24,19 +25,22 @@ public class CombatPlayer {
 
         startRunnable();
     }
+    private boolean sendMessages = ApeCombatLog.getInstance().getConfig().getBoolean("send_messages", true);
     public void startRunnable(){
-        this.scheadulerId = new BukkitRunnable() {
-            @Override
-            public void run() {
-                player.sendMessage("");
-                player.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ!");
-                player.sendMessage("");
-                damager.sendMessage("");
-                damager.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ!");
-                damager.sendMessage("");
-                remove();
-            }
-        }.runTaskLater(ApeCombatLog.getInstance(), combatTime * 20).getTaskId();
+        if (sendMessages == true) {
+            this.scheadulerId = new BukkitRunnable() {
+                @Override
+                public void run() {
+                    player.sendMessage("");
+                    player.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ!");
+                    player.sendMessage("");
+                    damager.sendMessage("");
+                    damager.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ!");
+                    damager.sendMessage("");
+                    remove();
+                }
+            }.runTaskLater(ApeCombatLog.getInstance(), combatTime * 20).getTaskId();
+        }
     }
 
     public Player getPlayer() {
@@ -79,8 +83,10 @@ public class CombatPlayer {
     }
     public void remove(){
         Bukkit.getScheduler().cancelTask(getScheadulerId());
-        player.removePotionEffect(PotionEffectType.GLOWING);
-        damager.removePotionEffect(PotionEffectType.GLOWING);
+        if (player.hasPotionEffect(PotionEffectType.GLOWING)){
+            player.removePotionEffect(PotionEffectType.GLOWING);
+            damager.removePotionEffect(PotionEffectType.GLOWING);
+        }
         CombatPlayers.remove(this);
 
     }
@@ -92,13 +98,16 @@ public class CombatPlayer {
         }
         return null;
     }
+
     public void sendMessage(String playerMessage, String damagemessage){
-        player.sendMessage("");
-        player.sendMessage(playerMessage);
-        player.sendMessage("");
-        damager.sendMessage("");
-        damager.sendMessage(damagemessage);
-        damager.sendMessage("");
+        if (sendMessages == true) {
+            player.sendMessage("");
+            player.sendMessage(playerMessage);
+            player.sendMessage("");
+            damager.sendMessage("");
+            damager.sendMessage(damagemessage);
+            damager.sendMessage("");
+        }
     }
 
 

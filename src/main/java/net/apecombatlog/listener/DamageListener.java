@@ -1,6 +1,7 @@
 package net.apecombatlog.listener;
 
 
+import net.apecombatlog.ApeCombatLog;
 import net.apecombatlog.managers.CombatPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Enemy;
@@ -14,6 +15,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class DamageListener implements Listener {
+    private boolean ifCombatEffect = ApeCombatLog.getInstance().getConfig().getBoolean("glowing", true);
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
         if (!(event.getEntity() instanceof Player) || !(event.getDamager() instanceof Player)) return;
@@ -23,8 +25,10 @@ public class DamageListener implements Listener {
         if (combatPlayer == null) {
             combatPlayer = CombatPlayer.createPlayer(player, damager);
             combatPlayer.sendMessage("§c§lʏᴏᴜ ɴᴏᴡ ɪɴ ᴄᴏᴍʙᴀᴛ!", "§c§lʏᴏᴜ ɴᴏᴡ ɪɴ ᴄᴏᴍʙᴀᴛ!");
-            player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, false, false, false));
-            damager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, false, false, false));
+            if (ifCombatEffect == true){
+                player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, false, false, false));
+                damager.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, Integer.MAX_VALUE, 1, false, false, false));
+            }
         } else {
            Bukkit.getScheduler().cancelTask(combatPlayer.getScheadulerId());
            combatPlayer.startRunnable();

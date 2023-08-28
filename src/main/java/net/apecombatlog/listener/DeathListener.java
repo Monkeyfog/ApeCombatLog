@@ -1,5 +1,6 @@
 package net.apecombatlog.listener;
 
+import net.apecombatlog.ApeCombatLog;
 import net.apecombatlog.managers.CombatPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

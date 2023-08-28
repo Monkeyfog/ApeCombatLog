@@ -1,5 +1,6 @@
 package net.apecombatlog;
 
+import net.apecombatlog.commands.ReloadCommand;
 import org.bstats.bukkit.Metrics;
 
 import net.apecombatlog.listener.DamageListener;
@@ -18,7 +19,8 @@ public final class ApeCombatLog extends JavaPlugin {
     public void onEnable() {
         instance = this;
         instance.getLogger().info("Hybro Wont LOG Anymore!");
-
+        saveDefaultConfig();
+        reloadConfig();
         Bukkit.getPluginManager().registerEvents(new DamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new LogListener(), this);
         Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
@@ -26,7 +28,7 @@ public final class ApeCombatLog extends JavaPlugin {
 
         int pluginId = 19373; // <-- Replace with the id of your plugin!
         Metrics metrics = new Metrics(this, pluginId);
-
+        getCommand("combatreload").setExecutor(new ReloadCommand());
     }
 
     @Override

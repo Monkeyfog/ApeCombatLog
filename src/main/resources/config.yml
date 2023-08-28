@@ -1,3 +1,6 @@
-#best plugin
-#customize comabat tag time
+#what time (in seconds) should players be in combat
 combat_time: 15
+#if there should be a glowing effect (true/false)
+glowing: true
+#if the messages should be sent (true/false)
+send_messages: true
