@@ -21,7 +21,7 @@ public class ReloadCommand implements CommandExecutor {
         }
         ApeCombatLog.getInstance().reloadConfig();
         sender.sendMessage(" ");
-        sender.sendMessage("plugin reloaded!");
+        sender.sendMessage("Plugin reloaded!");
         sender.sendMessage(" ");
         return true;
     }

@@ -18,7 +18,7 @@ public final class ApeCombatLog extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        instance.getLogger().info("Hybro Wont LOG Anymore!");
+        instance.getLogger().info("Please Rate us - https://www.spigotmc.org/resources/simple-combat-log.111737/");
         saveDefaultConfig();
         reloadConfig();
         Bukkit.getPluginManager().registerEvents(new DamageListener(), this);

@@ -9,12 +9,13 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class DeathListener implements Listener {
+    private String playerDeathCombat = ApeCombatLog.getInstance().getConfig().getString("player_death_combat", "Died");
     @EventHandler
     public void onDeath(PlayerDeathEvent event){
         Player player = event.getPlayer();
         CombatPlayer combatPlayer = CombatPlayer.getCombatPlayer(player);
         if (combatPlayer != null){
-            combatPlayer.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ! §f" + player.getName() + " §c§lᴅɪᴇᴅ", "§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ! §f§fYou §c§lᴅɪᴇᴅ");
+            combatPlayer.sendMessage(combatPlayer.NotInCombatMessages + "§f§l " + player.getName() + "§a§l" +playerDeathCombat, combatPlayer.NotInCombatMessages + "§f " + player.getName() + "§a§l" +playerDeathCombat );
             combatPlayer.remove();
         }
 

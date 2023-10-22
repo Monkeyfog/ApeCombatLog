@@ -9,14 +9,18 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class LogListener implements Listener {
     private boolean sendMessages = ApeCombatLog.getInstance().getConfig().getBoolean("send_messages", true);
+    private String playerDisconnectMsg = ApeCombatLog.getInstance().getConfig().getString("player_discornnect", "Disconnected");
     @EventHandler
+
     public void onQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
         CombatPlayer combatPlayer = CombatPlayer.getCombatPlayer(player);
         if (combatPlayer != null){
             player.setHealth(0);
             if (sendMessages == true) {
-                combatPlayer.sendMessage("", "§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ! §f" + player.getName() + " §c§lᴅɪsᴄᴏɴɴᴇᴄᴛᴇᴅ");
+                combatPlayer.sendMessage("", combatPlayer.NotInCombatMessages +" §f§l " + player.getName() + " " + playerDisconnectMsg);
+
+
             }
             combatPlayer.remove();
 

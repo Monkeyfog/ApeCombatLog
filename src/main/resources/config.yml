@@ -1,6 +1,20 @@
 #what time (in seconds) should players be in combat
 combat_time: 15
+
 #if there should be a glowing effect (true/false)
 glowing: true
+
 #if the messages should be sent (true/false)
 send_messages: true
+
+#the message sent when you enter combat **USE THIS SYMBOL FOR COLORS § !!!**
+in_combat_message: "§c§lYou are now in combat!"
+
+#the message sent when you exit combat **USE THIS SYMBOL FOR COLORS § !!!**
+not_in_combat_message: "§a§lYou are no longer in combat!"
+
+#message for when quits combat and died (you are no longer in combat player1 --->Died<---)
+player_death_combat: "Died"
+
+#message for when quits combat while disconnecting (you are no longer in combat player1 --->Disconnected<---)
+player_discornnect: "Disconnected"

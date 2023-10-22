@@ -25,6 +25,7 @@ public class CombatPlayer {
 
         startRunnable();
     }
+    public String NotInCombatMessages = ApeCombatLog.getInstance().getConfig().getString("not_in_combat_message", "§a§lYou are no longer in combat!");
     private boolean sendMessages = ApeCombatLog.getInstance().getConfig().getBoolean("send_messages", true);
     public void startRunnable(){
         if (sendMessages == true) {
@@ -32,10 +33,10 @@ public class CombatPlayer {
                 @Override
                 public void run() {
                     player.sendMessage("");
-                    player.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ!");
+                    player.sendMessage(NotInCombatMessages);
                     player.sendMessage("");
                     damager.sendMessage("");
-                    damager.sendMessage("§a§lʏᴏᴜ ᴀʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ɪɴ ᴄᴏᴍʙᴀᴛ!");
+                    damager.sendMessage(NotInCombatMessages);
                     damager.sendMessage("");
                     remove();
                 }
