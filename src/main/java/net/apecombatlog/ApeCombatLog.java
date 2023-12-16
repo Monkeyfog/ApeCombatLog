@@ -18,7 +18,11 @@ public final class ApeCombatLog extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        instance.getLogger().info("");
         instance.getLogger().info("Please Rate us - https://www.spigotmc.org/resources/simple-combat-log.111737/");
+        instance.getLogger().info("");
+        instance.getLogger().info("Looking for GOOD Hosting? - https://monkeyhost.co");
+        instance.getLogger().info("");
         saveDefaultConfig();
         reloadConfig();
         Bukkit.getPluginManager().registerEvents(new DamageListener(), this);
