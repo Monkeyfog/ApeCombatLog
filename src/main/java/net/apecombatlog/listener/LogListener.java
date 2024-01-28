@@ -2,10 +2,15 @@ package net.apecombatlog.listener;
 
 import net.apecombatlog.ApeCombatLog;
 import net.apecombatlog.managers.CombatPlayer;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+
+import java.awt.*;
 
 public class LogListener implements Listener {
     private boolean sendMessages = ApeCombatLog.getInstance().getConfig().getBoolean("send_messages", true);

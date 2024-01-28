@@ -1,13 +1,14 @@
 package net.apecombatlog;
 
+import jdk.jpackage.internal.Log;
 import net.apecombatlog.commands.ReloadCommand;
+import net.apecombatlog.listener.*;
 import org.bstats.bukkit.Metrics;
 
-import net.apecombatlog.listener.DamageListener;
-import net.apecombatlog.listener.DeathListener;
-import net.apecombatlog.listener.ElytraListener;
-import net.apecombatlog.listener.LogListener;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -25,6 +26,7 @@ public final class ApeCombatLog extends JavaPlugin {
         instance.getLogger().info("");
         saveDefaultConfig();
         reloadConfig();
+        Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
         Bukkit.getPluginManager().registerEvents(new DamageListener(), this);
         Bukkit.getPluginManager().registerEvents(new LogListener(), this);
         Bukkit.getPluginManager().registerEvents(new DeathListener(), this);

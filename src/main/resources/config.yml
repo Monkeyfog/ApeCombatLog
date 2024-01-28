@@ -18,3 +18,6 @@ player_death_combat: "Died"
 
 #message for when quits combat while disconnecting (you are no longer in combat player1 --->Disconnected<---)
 player_discornnect: "Disconnected"
+
+#if the plugin should send ad to op's
+send_ad: true
