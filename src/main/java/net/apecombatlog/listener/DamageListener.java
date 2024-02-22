@@ -17,7 +17,7 @@ import org.bukkit.potion.PotionEffectType;
 public class DamageListener implements Listener {
     private boolean ifCombatEffect = ApeCombatLog.getInstance().getConfig().getBoolean("glowing", true);
     private String InCombatMessage = ApeCombatLog.getInstance().getConfig().getString("in_combat_message", "§c§lYou are now in combat!");
-    @EventHandler
+    @EventHandler (ignoreCancelled = true, priority = EventPriority.LOWEST)
     public void onDamage(EntityDamageByEntityEvent event) {
         if (!(event.getEntity() instanceof Player) || !(event.getDamager() instanceof Player)) return;
         Player player = (Player)event.getEntity();
