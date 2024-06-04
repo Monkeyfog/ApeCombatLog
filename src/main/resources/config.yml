@@ -19,5 +19,12 @@ player_death_combat: "Died"
 #message for when quits combat while disconnecting (you are no longer in combat player1 --->Disconnected<---)
 player_discornnect: "Disconnected"
 
-#if the plugin should send ad to op's
+#if the plugin should send advertisement to people (ONLY SENDS IT TO OPERATORS)
 send_ad: true
+
+#commands to block in combat
+blocked_commands:
+  - /npc
+  - /help
+  - /home
+  - /tpa

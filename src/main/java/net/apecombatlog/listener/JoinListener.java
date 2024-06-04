@@ -16,7 +16,7 @@ public class JoinListener implements Listener {
         Player player = event.getPlayer();
         if(player.isOp() && sendAds==true){
             player.sendMessage("⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠");
-            player.sendMessage("§c§l Get the cheapest & best hosting for Minecraft - §f§lhttps://monkeyhost.co §c§lcode - §f§l`monkey` §c§lfor 30% off!");
+            player.sendMessage("§c§l Get the best hosting for Minecraft - §f§lhttps://monkeyhost.co §c§lcode - §f§l`monkey` §c§lfor 30% off! &7(message sent only to operators)");
             player.sendMessage("⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠⚠");
         }
     }

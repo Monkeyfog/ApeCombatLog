@@ -22,7 +22,7 @@ public final class ApeCombatLog extends JavaPlugin {
         instance.getLogger().info("");
         instance.getLogger().info("Please Rate us - https://www.spigotmc.org/resources/simple-combat-log.111737/");
         instance.getLogger().info("");
-        instance.getLogger().info("Looking for GOOD Hosting? - https://monkeyhost.co");
+        instance.getLogger().info("Looking for GOOD Hosting? - https://monkeyhost.co &7(message sent only to operators)");
         instance.getLogger().info("");
         saveDefaultConfig();
         reloadConfig();
@@ -31,6 +31,7 @@ public final class ApeCombatLog extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new LogListener(), this);
         Bukkit.getPluginManager().registerEvents(new DeathListener(), this);
         Bukkit.getPluginManager().registerEvents(new ElytraListener(), this);
+        Bukkit.getPluginManager().registerEvents(new CommandListener(), this);
 
         int pluginId = 19373; // <-- Replace with the id of your plugin!
         Metrics metrics = new Metrics(this, pluginId);
